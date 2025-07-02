@@ -30,7 +30,14 @@ namespace Inventory_LIB.Repositories.Child
 
         public string Save()
         {
-            throw new NotImplementedException();
+           if(_context.SaveChanges()>0)
+            {
+                return "Operation success";
+            }
+           else
+            {
+                return "Operation failed";
+            }
         }
     }
 }

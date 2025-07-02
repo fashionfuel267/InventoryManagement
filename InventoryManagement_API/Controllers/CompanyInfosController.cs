@@ -19,5 +19,13 @@ namespace InventoryManagement_API.Controllers
             var data= await _unitOFWork.CompanyRepo.GetAll(null,null);
             return data.ToList();
         }
+        [HttpPost]
+        public async Task<IActionResult > Post(CompanyInfo entity)
+        {
+             await _unitOFWork.CompanyRepo.Add(entity);
+            _unitOFWork.Save();
+            return Created("", entity);
+         
+        }
     }
 }
