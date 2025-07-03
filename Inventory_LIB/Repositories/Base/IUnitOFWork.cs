@@ -10,7 +10,7 @@ namespace Inventory_LIB.Repositories.Base
   public  interface IUnitOFWork
     {
         public ICompanyRepo  CompanyRepo{get;}
-
+        public ICompanyBranchRepo CompanyBranchRepo { get; }
         string Save();
     }
 }

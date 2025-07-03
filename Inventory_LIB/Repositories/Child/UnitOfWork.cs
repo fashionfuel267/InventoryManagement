@@ -27,6 +27,18 @@ namespace Inventory_LIB.Repositories.Child
                 return companyRepo;
             }
         }
+     public   ICompanyBranchRepo companyBranchRepo;
+        public ICompanyBranchRepo CompanyBranchRepo
+        {
+            get
+            {
+                if(companyBranchRepo==null)
+                {
+                    companyBranchRepo =new CompanyBranchRepo(_context);
+                }
+                return companyBranchRepo;
+            }
+        }
 
         public string Save()
         {

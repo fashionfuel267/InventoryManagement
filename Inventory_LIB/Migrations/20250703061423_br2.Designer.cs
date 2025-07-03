@@ -4,6 +4,7 @@ using Inventory_LIB.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inventory_LIB.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    partial class InventoryContextModelSnapshot : ModelSnapshot
+    [Migration("20250703061423_br2")]
+    partial class br2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +37,9 @@ namespace Inventory_LIB.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ComId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyInfoId")
                         .HasColumnType("int");
 
                     b.Property<string>("ContactPerson")
@@ -94,7 +100,7 @@ namespace Inventory_LIB.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ComId");
+                    b.HasIndex("CompanyInfoId");
 
                     b.ToTable("CompanyBranch");
                 });
@@ -145,7 +151,7 @@ namespace Inventory_LIB.Migrations
                 {
                     b.HasOne("Inventory_LIB.Models.CompanyInfo", "CompanyInfo")
                         .WithMany()
-                        .HasForeignKey("ComId")
+                        .HasForeignKey("CompanyInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

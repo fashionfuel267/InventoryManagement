@@ -18,6 +18,7 @@ namespace Inventory_LIB.Models
             
         }
         public DbSet<CompanyInfo> CompanyInfos { get; set; }
+        public DbSet<CompanyBranch> CompanyBranch { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=.\\SqlExpress  ;Initial Catalog=dbInv; TrustServerCertificate=true;Trusted_connection=true; ");
