@@ -4,6 +4,7 @@ using Inventory_LIB.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inventory_LIB.Migrations
 {
     [DbContext(typeof(InventoryContext))]
-    partial class InventoryContextModelSnapshot : ModelSnapshot
+    [Migration("20250714072655_identity")]
+    partial class identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,6 +88,66 @@ namespace Inventory_LIB.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "40e4f3be-8069-45d0-a82b-431bd39db788",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "8656f55e-718f-4bf7-acb7-54def9e1520e",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAENa4kTOb/NINxIAmZRHhc2sy7HMIsfyZmEeobpbSOuyqj9PH0MaobELob+zJENLlzQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "f17106f0-0ca5-4177-beb0-b1ee095f3c8f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "e1661d7a-f1ad-4d55-bc4e-ddea527c0079",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "805e360e-5fed-4be5-a450-2b89ac1f7ecc",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "STAFF",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBdGtUI5c3EHuIe1sddBE0nRUb9gnwwoeNfr6BDHJ6bHIXc7llOn9PCEVPtKx1vOMg==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "7f7fefa4-4b11-4670-ab80-502139587dcb",
+                            TwoFactorEnabled = false,
+                            UserName = "staff"
+                        },
+                        new
+                        {
+                            Id = "21b2bf29-0732-400a-a677-87a94ace9a34",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "60d8b52d-799e-4cb8-8c8d-d602f85546b8",
+                            Email = "shahanaj89@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "SHAHANAJ",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFxa3mJXJcQN+A7/59bl3qd23lv/zV5UZDmfxUjuDlAooYACG7Efn5HDE4dnTDSqVA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "79452da0-a40a-4358-9df5-6815353a0d3c",
+                            TwoFactorEnabled = false,
+                            UserName = "Shahanaj"
+                        },
+                        new
+                        {
+                            Id = "af06f86c-6d7f-42b8-9a66-f8ebe719236d",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "ebf70305-4364-43ef-8f9f-f75366e426ed",
+                            Email = "devshahanaj123@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedUserName = "TUSHAR",
+                            PasswordHash = "AQAAAAIAAYagAAAAECOR3Et/dDYruOzq+stajCGh1yh5j+wBh7RM+yVL6Yok3ybDhjioad6omZXbBFSyHQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "cba796d9-0bfc-465e-aea5-a60ab8cb9e41",
+                            TwoFactorEnabled = false,
+                            UserName = "tusher"
+                        });
                 });
 
             modelBuilder.Entity("Inventory_LIB.Models.CompanyBranch", b =>
@@ -231,6 +294,32 @@ namespace Inventory_LIB.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1a462f13-1582-43fa-8ec3-e89d9ba0f193",
+                            Name = "Admin",
+                            NormalizedName = " ADMIN"
+                        },
+                        new
+                        {
+                            Id = "d33d279b-df10-4cf0-aea0-150216a838c1",
+                            Name = "Staff",
+                            NormalizedName = "STAFF"
+                        },
+                        new
+                        {
+                            Id = "df3fe308-d838-424c-8069-6526571a0928",
+                            Name = "Vendor",
+                            NormalizedName = "VENDOR"
+                        },
+                        new
+                        {
+                            Id = "016c4925-a330-4d17-8003-1b6a5a34020a",
+                            Name = "Director",
+                            NormalizedName = "DIRECTOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -344,7 +433,7 @@ namespace Inventory_LIB.Migrations
                     b.HasOne("Inventory_LIB.Models.CompanyInfo", "CompanyInfo")
                         .WithMany()
                         .HasForeignKey("ComId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("CompanyInfo");
@@ -355,7 +444,7 @@ namespace Inventory_LIB.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -364,7 +453,7 @@ namespace Inventory_LIB.Migrations
                     b.HasOne("Inventory_LIB.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -373,7 +462,7 @@ namespace Inventory_LIB.Migrations
                     b.HasOne("Inventory_LIB.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -382,13 +471,13 @@ namespace Inventory_LIB.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Inventory_LIB.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -397,7 +486,7 @@ namespace Inventory_LIB.Migrations
                     b.HasOne("Inventory_LIB.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

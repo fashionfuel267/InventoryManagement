@@ -14,6 +14,7 @@ namespace InventoryManagement_API.Controllers
         {
             _unitOFWork = unitOFWork;
         }
+        [HttpGet]
         public async Task<List<CompanyInfo>> Get()
         {
             var data= await _unitOFWork.CompanyRepo.GetAll(null,null);
