@@ -1,5 +1,6 @@
 ﻿using Inventory_LIB.Models;
 using Inventory_LIB.Repositories.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace InventoryManagement_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CompanyBranchController : ControllerBase
     {
         private IUnitOFWork _unitOFWork;
